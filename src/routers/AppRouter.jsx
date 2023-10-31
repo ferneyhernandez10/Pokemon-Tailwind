@@ -9,8 +9,12 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/" element={<PokemonList />} />
         <Route path="/list" element={<PokemonList />} />
-        <Route path="/information" element={<PokemonInformation />} />
+        <Route
+          path="/information/:pokemonId"
+          element={<PokemonInformation />}
+        />
       </Routes>
     </BrowserRouter>
   );
 };
+

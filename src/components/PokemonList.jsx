@@ -11,10 +11,15 @@ export const PokemonList = () => {
   }, []);
 
   const pokemonsList = pokemons?.map((pokemon, index) => (
-    <li key={index}>
-      <Link to="/information">{pokemon.name}</Link>
+    <li className="list-decimal" key={index}>
+      <Link to={`/information/${pokemon.name}`}>{pokemon.name}</Link>
     </li>
   ));
 
-  return <div className="">{pokemonsList}</div>;
+  return (
+    <div className="flex flex-col flex-wrap justify-center items-center">
+      <p className="text-lg font-medium capitalize">Pokemon List</p>
+      <p className="capitalize">{pokemonsList}</p>
+    </div>
+  );
 };
