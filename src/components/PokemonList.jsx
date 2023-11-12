@@ -27,17 +27,22 @@ export const PokemonList = () => {
 
   const pokemonsList = leakedPokemonName?.map((pokemon, index) => (
     <div
-      className="block max-w-sm px-44 py-3 m-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      className="max-w-2xl p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       key={index}
     >
-      <Link to={`/information/${pokemon.name}`}>{pokemon.name}</Link>
+      <Link
+        className="w-96 text-center text-2xl font-medium capitalize"
+        to={`/information/${pokemon.name}`}
+      >
+        <p className="">{pokemon.name}</p>
+      </Link>
     </div>
   ));
 
   return (
-    <div className="mx-20">
+    <div className="container mx-auto px-2 lg:px-8 ">
       <p className="text-4xl text-center font-bold capitalize">Pokemon List</p>
-      <div className="flex flex-row">
+      <div className="flex flex-col justify-center xl:flex-row pb-4">
         <img src={pokemonImage} alt="Loading..." />
         <div className="flex flex-col">
           <h5 className="text-2xl font-medium">
@@ -71,7 +76,7 @@ export const PokemonList = () => {
         onChange={handleChange}
         className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
-      <div className="flex flex-wrap justify-between text-2xl font-medium capitalize">
+      <div className="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2 md:grid-cols-3 ">
         {pokemonsList}
       </div>
     </div>
