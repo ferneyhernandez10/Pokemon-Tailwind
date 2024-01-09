@@ -27,6 +27,12 @@ export const PokemonInformation = () => {
     const data = await response.json();
     setPokemonData(data);
   };
+
+  const openModal = (url) => {
+    setUrlModal(url);
+    openInformationModal();
+  };
+
   const skills = pokemonData?.abilities?.map((ability, index) => (
     <li
       key={index}
@@ -34,9 +40,7 @@ export const PokemonInformation = () => {
         activeIndex === 1 ? "" : "hidden"
       }`}
     >
-      <Link
-        onClick={() => console.log(openInformationModal(ability.ability.url))}
-      >
+      <Link onClick={() => openModal(ability.ability.url)}>
         {ability.ability.name}
       </Link>
     </li>
@@ -49,9 +53,7 @@ export const PokemonInformation = () => {
         activeIndex === 2 ? "" : "hidden"
       }`}
     >
-      <Link onClick={() => console.log(openInformationModal(move.move.url))}>
-        {move.move.name}
-      </Link>
+      <Link onClick={() => openModal(move.move.url)}>{move.move.name}</Link>
     </li>
   ));
 
@@ -147,6 +149,7 @@ export const PokemonInformation = () => {
             <InformationModal
               isOpen={isOpenInformationModal}
               closeModal={closeInformationModal}
+              urlModal={urlModal}
             />
             {statistics}
             {guys}
